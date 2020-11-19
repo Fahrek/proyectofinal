@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <span><a href="{% url 'home' %}">home</a> | <a href="{% url 'about' %}"> about </a> | <a href="{% url 'insertar' %}">insert</a></span>
+    <h1>Bienvenido, {{ user }}</h1>
+    <img src="static/Django.jpg" alt="">
+    <h1>Notas</h1>
+    {{ nota }}
+    <form method="POST" action="/anadir">
+        {% csrf_token %}
+        <label for="id_prioridad">Prioridad:</label>
+        <select id="id_prioridad" name="name_prioridad">
+                <option value="alta">Alta</option>
+                <option value="normal">Normal</option>
+                <option value="baja">Baja</option>
+        </select>
+        <br>
+        <input type="text" name="nombre_titulo" placeholder="titulo" size="27"><br>
+        <textarea name="name_nota" id="id_new_item" cols="40" rows="5" placeholder="Escribe tu nota aquí"></textarea>
+        <br>
+        <input type="submit" value="guardar">
+    </form>
+</body>
+</html>
